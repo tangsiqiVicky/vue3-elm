@@ -30,3 +30,8 @@ $bc: #e4e4e4;
 	left: 50%;
 	transform: translateX(-50%)
 }
+//flex 布局和子元素对齐方式
+@mixin fj($type: space-between) {
+	display: flex;
+	justify-content: $type
+}

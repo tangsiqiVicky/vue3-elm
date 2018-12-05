@@ -1,19 +1,32 @@
 <template>
   <div>
-    <header-top :name="title"></header-top>
+    <header-top :name="title">
+      <router-link :to="'/'" slot="search" class="link_search">
+        <svg xmlns="http://www.w3.org/2000/svg" version="1.1" >
+          <circle cx="8" cy="8" r="7" stroke="rgb(255,255,244)" stroke-width="1" fill="none"></circle>
+          <line x1="14" y1="14" x2="20" y2="20" style="stroke:rgb(255,255,255);stroke-width:2"></line>
+        </svg>
+      </router-link>
+    </header-top>
     <nav class="msite_nav">
-      <swiper :options="swiperOption">
-        <swiper-slide>I'm Slide 1</swiper-slide>
-        <swiper-slide>I'm Slide 2</swiper-slide>
-        <swiper-slide>I'm Slide 3</swiper-slide>
-        <swiper-slide>I'm Slide 4</swiper-slide>
-        <swiper-slide>I'm Slide 5</swiper-slide>
-        <swiper-slide>I'm Slide 6</swiper-slide>
-        <swiper-slide>I'm Slide 7</swiper-slide>
+      <swiper :options="swiperOption" v-if="foodType.length">
+        <swiper-slide v-for="item in foodType" :key="item">
+          <div class="food_types_container">
+            <a class="link_to_food" v-for="i in item" :key="i">
+              <figure>
+                <img width="36px" heigth="36px" style="background: yellow"/>
+                <figcaption>
+                  {{i}}
+                </figcaption>
+              </figure>
+            </a>
+          </div>
+        </swiper-slide>
         <div class="swiper-pagination" slot="pagination"></div>
       </swiper>
+      <img src="../../images/fl.svg" v-else>
     </nav>
-  </div>  
+  </div>
 </template>
 
 <script>
@@ -25,14 +38,22 @@ export default {
     return {
       title: '主页',
       swiperOption: {
-          pagination: {
-            el: '.swiper-pagination'
-          }
+        pagination: {
+          el: '.swiper-pagination'
         }
+      },
+      imgs: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16],
+      foodType: []
     }
   },
   components: {
     headerTop, swiper, swiperSlide
+  },
+  created () {
+    let imgsLength = this.imgs.length
+    for (let i = 0, j = 0; i < imgsLength; i += 8, j++) {
+      this.foodType[j] = this.imgs.splice(0, 8)
+    }
   }
 }
 
@@ -41,10 +62,40 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
   @import 'src/style/mixin';
+  .link_search {
+    left: .8em;
+    @include wh(.9em, .9em);
+    @include ct;
+    svg {
+      @include wh(100%, 100%)
+    }
+  }
   .msite_nav {
     padding-top: 2.1em;
     background-color: #fff;
     border-bottom: 0.025em solid $bc;
     height: 10.6rem;
+    .swiper-container {
+      @include wh(100%, 100%)
+    }
+  }
+  .food_types_container{
+    display: flex;
+    flex-wrap: wrap;
+    .link_to_food {
+      width: 25%;
+      padding: 0.3em 0em;
+      @include fj(center);
+      figure{
+        img{
+          margin-bottom: 0.3em;
+          @include wh(1.8em, 1.8em)
+        }
+        figcaption{
+          text-align: center;
+          @include sc(0.55em, #666)
+        }
+      }
+    }
   }
 </style>

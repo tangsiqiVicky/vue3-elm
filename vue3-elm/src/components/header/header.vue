@@ -22,7 +22,7 @@ export default {
 <style scoped lang="scss">
 @import '../../style/mixin';
   #headerTop {
-  	background-color: $blue;
+    background-color: $blue;
     position: fixed;
     z-index: 100;
     left: 0;
@@ -34,7 +34,6 @@ export default {
       @include ct;
       line-height: 2.2em;
       margin-left: .4em;
-      background: red
     }
     .title_head {
       @include center;
