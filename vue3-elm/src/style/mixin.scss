@@ -35,3 +35,7 @@ $bc: #e4e4e4;
 	display: flex;
 	justify-content: $type
 }
+//字体大小、行高、字体
+@mixin font($size, $line-height, $family: 'Microsoft YaHei') {
+	font: #{$size}/#{$line-height} $family;
+}

@@ -10,7 +10,7 @@
     </header-top>
     <nav class="msite_nav">
       <swiper :options="swiperOption" v-if="foodType.length">
-        <swiper-slide v-for="item in foodType" :key="item">
+        <swiper-slide v-for="(item,index) in foodType" :key="index">
           <div class="food_types_container">
             <a class="link_to_food" v-for="i in item" :key="i">
               <figure>
@@ -24,8 +24,16 @@
         </swiper-slide>
         <div class="swiper-pagination" slot="pagination"></div>
       </swiper>
-      <img src="../../images/fl.svg" v-else>
+      <img src="../../assets/fl.svg" v-else>
     </nav>
+    <div class="shop_list_container">
+      <header class="shop_header">
+        <svg class="shop_icon">
+          <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#shop"></use>
+        </svg>
+        <span class="shop_header_title">附近商家</span>
+      </header>
+    </div>
   </div>
 </template>
 
@@ -95,6 +103,23 @@ export default {
           text-align: center;
           @include sc(0.55em, #666)
         }
+      }
+    }
+  }
+  .shop_list_container {
+    margin-top: .4em;
+    border-top: 0.025em solid $bc;
+    background-color: #fff;
+    .shop_header {
+      .shop_icon{
+        fill: #999;
+        margin-left: 0.6rem;
+        vertical-alignz: middle;
+        @include wh(0.6rem, 0.6rem)
+      }
+      .shop_header_title{
+        color: #999;
+        @include font(0.55em, 1.6em)
       }
     }
   }
