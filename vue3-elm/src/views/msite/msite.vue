@@ -33,12 +33,14 @@
         </svg>
         <span class="shop_header_title">附近商家</span>
       </header>
+      <shop-list></shop-list>
     </div>
   </div>
 </template>
 
 <script>
 import headerTop from '../../components/header/header.vue'
+import shopList from '../../components/common/shopList.vue'
 import { swiper, swiperSlide } from 'vue-awesome-swiper'
 export default {
   name: 'HelloWorld',
@@ -55,7 +57,7 @@ export default {
     }
   },
   components: {
-    headerTop, swiper, swiperSlide
+    headerTop, swiper, swiperSlide, shopList
   },
   created () {
     let imgsLength = this.imgs.length
@@ -119,6 +121,7 @@ export default {
       }
       .shop_header_title{
         color: #999;
+        margin-left: 0.2em;
         @include font(0.55em, 1.6em)
       }
     }
