@@ -34,7 +34,9 @@
       "plugin:vue/essential",
       "@vue/standard"
     ],
-    "rules": {},
+    "rules": {
+      "no-tabs": "off"
+    },
     "parserOptions": {
       "parser": "babel-eslint"
     }
