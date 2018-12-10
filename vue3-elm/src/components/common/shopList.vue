@@ -1,7 +1,7 @@
 <template>
 	<div class="shoplist_container">
 		<ul>
-            <li class="shop_li">
+            <router-link :to="{path: 'shop', query:{id:1}}" tag="li" class="shop_li">
 				<section>
 					<img class="shop_img"/>
                 </section>
@@ -39,8 +39,20 @@
                             </span>
                         </section>
 					</h5>
+                    <h5 class="fee_distance">
+                        <p class="fee">
+                            ￥20起送
+                            <span class="segmentation">/</span>
+                            配送费￥5
+                        </p>
+                        <p class="distance_time">
+                            <span>26公里</span>
+                            <span class="segmentation">/</span>
+                            <span class="order_time">41分钟</span>
+                        </p>
+                    </h5>
 				</hgroup>
-			</li>
+			</router-link>
 		</ul>
         <ul>
             <li class="list_back_li" v-for="i in 10" :key="i">
@@ -153,6 +165,27 @@ export default {
                         }
 
                     }
+                .fee_distance{
+                    margin-top: 0.85em;
+                    @include fj;
+                    @include sc(0.5em, #333);
+                    .fee {
+                        transform: scale(.9);
+                        color: #666;
+                    }
+                    .distance_time {
+                        transform: scale(.9);
+                        span {
+                            color: #999
+                        }
+                        .order_time {
+                            color: $blue
+                        }
+                        .segmentation {
+                            color: #ccc
+                        }
+                    }
+                }
             }
         }
         .list_back_li {

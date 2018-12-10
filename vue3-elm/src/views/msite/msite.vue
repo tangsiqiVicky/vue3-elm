@@ -43,7 +43,7 @@ import headerTop from '../../components/header/header.vue'
 import shopList from '../../components/common/shopList.vue'
 import { swiper, swiperSlide } from 'vue-awesome-swiper'
 export default {
-  name: 'HelloWorld',
+  name: 'msite',
   data () {
     return {
       title: '主页',
