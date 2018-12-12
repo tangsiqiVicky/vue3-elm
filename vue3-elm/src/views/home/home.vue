@@ -1,12 +1,19 @@
 <template>
-	<div>
-		首页
-	</div>
+  <header-top :name="name"></header-top>
 </template>
 
 <script>
+import headerTop from '../../components/header/header.vue'
 export default {
-  name: 'home'
+  name: 'home',
+  data () {
+    return {
+      name: 'home'
+    }
+  },
+  components: {
+    headerTop
+  }
 }
 </script>
 

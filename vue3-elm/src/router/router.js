@@ -1,6 +1,11 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Home from './views/home/home.vue'
+import Home from '../views/home/home.vue'
+const msite = () => import(/* webpackChunkName: "about" */ '../views/msite/msite.vue')
+const order = () => import('@/views/order/order.vue')
+const profile = () => import('@/views/profile/profile.vue')
+const search = () => import('@/views/search/search.vue')
+const shop = () => import('@/views/shop/shop.vue')
 Vue.use(Router)
 
 export default new Router({
@@ -19,30 +24,34 @@ export default new Router({
       // route level code-splitting
       // this generates a separate chunk (about.[hash].js) for this route
       // which is lazy-loaded when the route is visited. 懒加载
-      component: () => import(/* webpackChunkName: "about" */ './views/msite/msite.vue')
+      component: msite,
+      meta: {
+        keepAlive: true
+      }
     },
-    // 订单列表
     {
+      // 订单列表
       path: '/order',
-      name: 'order',searchAddress
-      component: () => import(/* webpackChunkName: "about" */ './views/order/order.vue')
+      name: 'order',
+      component: order
     },
-    // 我的主页
     {
+      // 我的主页
       path: '/profile',
       name: 'profile',
-      component: () => import(/* webpackChunkName: "about" */ './views/profile/profile.vue')
-    }, 
-    // 搜索页面
-    {
-      path: '/search',
-      name: 'search',
-      component: () => import(/* webpackChunkName: "about" */ './views/search/search.vue')
+      component: profile
     },
     {
+      // 搜索页面
+      path: '/search',
+      name: 'search',
+      component: search
+    },
+    {
+      // 店铺页面
       path: '/shop',
       name: 'shop',
-      component: () => import('./views/shop/shop.vue')
+      component: shop
     }
   ]
 })
