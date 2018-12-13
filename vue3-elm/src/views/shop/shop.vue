@@ -13,8 +13,8 @@
             <section class="description_left">
               <img src="" alt="">
             </section>
-            <section class="descript_right">
-              <h4 class="description_title_ellipsis">和府拉面</h4>
+            <section class="description_right">
+              <h4 class="description_title ellipsis">和府拉面</h4>
               <p class="description_text">商家配送/30分钟送达/配送费￥5</p>
               <p class="description_promotion ellipsis">
                 公告： 欢迎光临，用餐高峰时期提前下单
@@ -24,21 +24,72 @@
               <path d="M0 0 L8 7 L0 14" stroke="#fff" strok-width="1" fill="none"></path>
             </svg>
           </router-link>
+          <footer class="description_footer" @click="showActivitiesFun">
+            <p class="ellipsis">
+              <span class="tip_icon" style="background-color: rgb(240, 115, 115); border-color: rgb(240, 115, 115);">减</span>
+              <span> 满30减5, 满60减8 (APP专享) </span>
+            </p>
+            <p>1个活动</p>
+            <svg class="footer_arrow">
+              <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#arrow-left"></use>
+            </svg>
+          </footer>
         </section>
       </header>
-    </section>
+      <transition name="fade">
+        <section class="activities_details" v-show="showActivities">
+          <h2 class="activities_shoptitle">和府拉面</h2>
+          <h3 class="activities_ratingstar">
+            <rating-star :rating='4.5'></rating-star>
+          </h3>
+          <section class="activities_list">
+            <header class="activities_title_style">
+              <span>优惠信息</span>
+            </header>
+            <ul>
+              <li>
+                <span class="activities_icon" style="background-color: rgb(240, 115, 115); border-color: rgb(240, 115, 115);">
+                  减
+                </span>
+                <span>
+                  满30减5, 满60减8 (APP专享)
+                </span>
+              </li>
+            </ul>
+          </section>
+          <section class="activities_shopinfo">
+            <header class="activities_title_style">
+              <span>商家公告</span>
+              <p>欢迎光临，用餐高峰期请提前下单</p>
+            </header>
+          </section>
+          <svg width="60" height="60" class="close_activities" @click.stop="showActivitiesFun">
+            <circle cx="30" cy="30" r="25" stroke="#555" stroke-width="1" fill="none"></circle>
+            <line x1="22" y1="38" x2="38" y2="22" style="stroke: #999; stroke-width: 2"></line>
+            <line x1="22" y1="22" x2="38" y2="38" style="stroke:#999; stroke-width: 2"></line>
+          </svg>
+        </section>
+      </transition>
+     </section>
   </div>
 </template>
 
 <script>
-
+import ratingStar from '../../components/common/ratingStar'
 export default {
   name: 'shop',
   data () {
     return {
+      showActivities: false
     }
   },
   components: {
+    ratingStar
+  },
+  methods: {
+    showActivitiesFun () {
+      this.showActivities = !this.showActivities
+    }
   },
   created () {
   }
@@ -78,7 +129,137 @@ export default {
         filter: blur(10px)
       }
       .description_header {
+        position: relative;
+        z-index: 10;
+        background-color: rgba(119,103,137,.43);
+        padding: 0.4em 0 0.4em 0.4em;
+        width: 100%;
+        overflow: hidden;
+        .description_top {
+          display: flex;
+          .description_left {
+            margin-right: 0.3em;
+            img {
+              @include wh(2.9em, 2.9em);
+              display: block;
+              border-radius: 0.15em
+            }
+          }
+          .description_right {
+              flex: 1;
+              .description_title {
+                @include sc(.8em, #fff)
+                font-weight: bold;
+                width: 100%;
+                margin-bottom: 0.3em
+              }
+              .description_text {
+                @include sc(.5em, #fff);
+                margin-bottom: 0.3em
+              }
+              .description_promotion {
+                @include sc(.5em, #fff);
+                width: 11.5em
+              }
+            }
+            .description_arrow {
+              @include ct;
+              right: 0.3em;
+              z-index: 11
+            }
+          }
+        }
+        .description_footer {
+          @include fj;
+          margin-top: 0.5em;
+          padding-right: .5em;
+          p {
+            @include sc(.5em, #fff);
+            span {
+              color: #fff;
+            }
+            .tip_icon {
+              padding: 0 .04em;
+              border: 0.025em solid #fff;
+              border-radius: 0.1em;
+              font-size: .4em;
+              display: inline-block
+            }
+          }
+          .ellipsis {
+            width: 84%;
+          }
+          .footer_arrow {
+            @include wh(.45em, .45em);
+            poaition: absolute;
+            right: .3em
+          }
+        }
+    }
+    .activities_details {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: #262626;
+      z-index: 200;
+      padding: 1.25em;
+      .activities_shoptitle {
+        text-align: center;
+        @include sc(.8em, #fff)
+      }
+      .activities_ratingstar {
+        display: flex;
+        justify-content: center;
+        transform: scale(1.1);
+        margin-top: .7em
+      }
+      .activities_list {
+        margin-top: 1.5em;
+        margin-bottom: 1em;
+        @include sc(.5em, #fff)
+        li {
+          margin-bottom: .2em;
+          .activities_icon {
+            padding: 0 .02em;
+            display: inline-block;
+            border: 0.025em solid #fff;
+            border-radius: 0.1em
+          }
+          span {
+            color: #fff;
+            line-height: .6em
+          }
+        }
+      }
+      .activities_shopinfo {
+        p {
+          line-height: .7em;
+          @include sc(.5em, #fff)
+        }
+      }
+      .activities_title_style {
+        text-align: center;
+        margin-bottom: 1em;
+        span {
+          @include sc(.5em, #fff);
+          border: 0.025 solid #555;
+          padding: .2em .4em;
+          border-radius: 0.5em
+        }
+      }
+      .close_activities {
+        position: absolute;
+        bottom: 1em;
+        @include cl
       }
     }
+  }
+  .fade-enter-active, .fade-leave-active {
+    transition: opacity .5s;
+  }
+  .fade-enter, .fade-leave-active {
+    opacity: 0;
   }
 </style>
