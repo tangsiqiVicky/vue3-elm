@@ -6,6 +6,7 @@ const order = () => import('@/views/order/order.vue')
 const profile = () => import('@/views/profile/profile.vue')
 const search = () => import('@/views/search/search.vue')
 const shop = () => import('@/views/shop/shop.vue')
+const login = () => import('@/views/login/login.vue')
 Vue.use(Router)
 
 export default new Router({
@@ -52,6 +53,12 @@ export default new Router({
       path: '/shop',
       name: 'shop',
       component: shop
+    },
+    {
+      // 登录
+      path: '/login',
+      name: 'login',
+      component: login
     }
   ]
 })

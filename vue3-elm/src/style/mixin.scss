@@ -39,3 +39,9 @@ $bc: #e4e4e4;
 @mixin font($size, $line-height, $family: 'Microsoft YaHei') {
 	font: #{$size}/#{$line-height} $family;
 }
+// 背景图片地址大小
+@mixin bis($url) {
+    background-image: url($url);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}

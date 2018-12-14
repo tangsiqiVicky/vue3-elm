@@ -70,6 +70,64 @@
           </svg>
         </section>
       </transition>
+      <section class="change_show_type">
+        <div>
+          <span :class="{activity_show: changeShowType === 'food'}" @click="changeShowType='food'">商品</span>
+        </div>
+        <div>
+          <span :class="{activity_show: changeShowType === 'rating'}" @click="changeShowType='rating'">评价</span>
+        </div>
+      </section>
+      <transition name="fade-choose">
+        <section v-show="changeShowType == 'food'" class="food_container">
+          <section class="menu_container">
+            <section class="menu_left" id="wrapper_menu">
+              <ul>
+                <li  class="menu_left_li" >
+                  <img src="" alt="">
+                  <span>热卖</span>
+                  <span class="category_num" ></span>
+                </li>
+              </ul>
+            </section>
+            <section class="menu_right">
+              <ul>
+                <li>
+                  <header class="menu_detail_header">
+                    <section class="menu_detail_header_left">
+                      <strong class="menu_item_title">
+                        溏心蛋
+                      </strong>
+                      <span class="menu_item_description">特别美味的溏心蛋</span>
+                    </section>
+                      <span class="menu_detail_header_right"></span>
+                      <!-- <p class="description_tip">
+                        <span>溏心蛋</span>
+                      </p> -->
+                  </header>
+                  <section class="menu_detail_list">
+                    <router-link tag="div" to="/" class="menu_detail_link">
+                      <section class="menu_food_img">
+                        <img/>
+                      </section>
+                      <section class="menu_food_description">
+                        <h3 class="food_descriotion_head">
+                          <strong class="description_foodname">
+                          溏心荷包蛋
+                          </strong>
+                          <ul class="attribute_ul">
+                            <li></li>
+                          </ul>
+                        </h3>
+                      </section>
+                    </router-link>
+                  </section>
+                </li>
+              </ul>
+            </section>
+          </section>
+        </section>
+      </transition>
      </section>
   </div>
 </template>
@@ -80,7 +138,8 @@ export default {
   name: 'shop',
   data () {
     return {
-      showActivities: false
+      showActivities: false,
+      changeShowType: 'food'
     }
   },
   components: {
@@ -253,6 +312,132 @@ export default {
         position: absolute;
         bottom: 1em;
         @include cl
+      }
+    }
+  }
+  .change_show_type {
+    display: flex;
+    background-color: #fff;
+    padding: .3em 0 .6em;
+    border-bottom: 1px solid #ebebeb;
+    div {
+      flex: 1;
+      text-align: center;
+      span {
+        @include sc(.65em, #666);
+        padding: .2em .1em;
+        border-bottom: 0.12em solid #fff
+      }
+    }
+    .activity_show {
+      color: #3190e8;
+      border-color: #3190e8
+    }
+  }
+  .food_container {
+    display: flex;
+    flex: 1;
+    padding-bottom: 2em;
+  }
+  .menu_container {
+    display: flex;
+    flex: 1;
+    overflow-y: hidden;
+    position: relative;
+    .menu_left {
+      width: 3.8em;
+      .menu_left_li {
+        padding: .7em .3em;
+        border-bottom: 0.025em solid #ededed;
+        box-sizing: border-box;
+        border-left: 0.15em solid #f8f8f8;
+        position: relative;
+        img {
+          @include wh(.5em, .6em)
+        }
+        span {
+          @include sc(.6em, #666)
+        }
+        .category_num {
+          position: absolute;
+          top: .1em;
+          right: .1em;
+          background-color: #ff461d;
+          line-height: .6em;
+          text-align: center;
+          border-radius: 50%;
+          border: 0.025em solid #ff461d;
+          min-width: .6em;
+          height: .6em;
+          @include sc(.5em, #fff);
+          font-family: Helvetica Neue,Tahoma,Arial;
+        }
+      }
+      .activity_menu {
+        border-left: 0.15em solid #319038;
+        background-color: #fff;
+        span:nth-of-type(1) {
+          font-weight: bold
+        }
+      }
+    }
+    .menu_right {
+      flex: 4;
+      overflow-y: auto;
+      .menu_detail_header {
+        width: 100%;
+        padding: .4em;
+        position: relativie;
+        @include fj;
+        align-item: center;
+        .menu_detail_header_left {
+          width: 11em;
+          white-space: nowrap;
+          overflow: hidden;
+          .menu_item_title {
+            @include sc(.7em, #666);
+            font-weight: blod;
+          }
+          .menu_item_description {
+            @include sc(.5em, #999);
+            width: 30%;
+            overflow: hidden
+          }
+        }
+        .menu_detail_header_right {
+          @include wh(.5em, 1em);
+          display: block;
+          @include bis('../../assets/icon_point.png');
+          background-size: 100% .4em;
+          background-position: left center;
+        }
+        .description_tip {
+          background-color: #39373a;
+          opacity: 0.95;
+          @include sc(.5em, #fff);
+          position: absolute;
+          top: 1.5em;
+          z-index: 14;
+          width: 8em;
+          right: .2em;
+          padding: .5em .4em;
+          border: 1px;
+          border-radius: .2em;
+          span {
+            color: #fff;
+            line-height: .6em;
+            font-size: .55em;
+          }
+        }
+        .description_tip::after {
+          content: '';
+          position: absolute;
+          @include wh(.4em, .4em);
+          background-color: #39373a;
+          top: -.5em;
+          right: .7em;
+          transform: rotate(-45deg) translateY(.41rem)
+        }
       }
     }
   }

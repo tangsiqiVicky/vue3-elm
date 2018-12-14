@@ -2,24 +2,38 @@
   <header id="headerTop">
     <slot name="logo"></slot>
     <slot name="search"></slot>
-    <section class="head_goback" ></section>
-    <section class="title_head">
+    <section class="head_goback" v-if="goBack" @click="$router.go(-1)">
+      <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" version="1.1">
+        <polyline points="12,18 4,9 12,0" style="fill:none;stroke:rgb(255,255,255); stroke-width:2"></polyline>
+      </svg>
+    </section>
+    <section class="title_head ellipsis" v-if="name">
       <span class="title_text">{{name}}</span>
     </section>
-    <section class="head_login">
-      <span class="login_span">登陆</span>
-    </section>
+    <router-link :to="userInfo? 'profile': 'login'" class="head_login" >
+      <svg class="user_avatar" v-if="userInfo">
+        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#user"></use>
+      </svg>
+      <span class="login_span" v-else>登录|注册</span>
+    </router-link>
+    <slot name="edit"></slot>
+    <slot name="msite-title"></slot>
+    <slot name="changecity"></slot>
+    <slot name="changeLogin"></slot>
   </header>
 </template>
 <script>
-// import { mapState } from 'vuex'
+import { mapState } from 'vuex'
 export default {
   name: 'headerTop',
-  props: ['name'],
+  props: ['name', 'goBack', 'signinUp'],
   computed: {
-    // ...mapState([
-    //   'userInfo'
-    // ])
+    ...mapState([
+      'userInfo'
+    ])
+  },
+  mounted () {
+
   }
 }
 </script>
