@@ -111,21 +111,58 @@
                         <img/>
                       </section>
                       <section class="menu_food_description">
-                        <h3 class="food_descriotion_head">
+                        <h3 class="food_description_head">
                           <strong class="description_foodname">
                           溏心荷包蛋
                           </strong>
-                          <ul class="attribute_ul">
-                            <li></li>
+                          <ul class="attributes_ul">
+                            <li class="attribute_new" style="color:rgb(94, 196, 82); border-color: rgb(94, 196, 82);">
+                              <p style="color:rgb(255, 255, 255);">
+                                新品
+                              </p>
+                            </li>
                           </ul>
                         </h3>
+                        <p class="food_description_content">好吃美味</p>
+                        <p class="food_description_sale_rating">
+                          <span>月售52份</span>
+                          <span>好评率100%</span>
+                        </p>
                       </section>
                     </router-link>
+                    <footer class="menu_detail_footer">
+                      <section class="food_price">
+                        <span>￥</span>
+                        <span>20</span>
+                        <span>起</span>
+                      </section>
+                    </footer>
                   </section>
                 </li>
               </ul>
             </section>
           </section>
+        <!--   <section class="buy_cart_container">
+            <section  class="cart_icon_num">
+              <div class="cart_icon_container">
+                <span class="cart_list_length">
+                  20
+                </span>
+                <svg class="cart_icon">
+                  <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#cart-icon"></use>
+                </svg>
+              </div>
+              <div class="cart_num">
+                <div>￥200</div>
+                <div>配送费￥5</div>
+              </div>
+            </section>
+            <section class="gotopay">
+              <span class="gotopay_button_style">
+                还差￥20起送
+              </span>
+            </section>
+          </section> -->
         </section>
       </transition>
      </section>
@@ -437,6 +474,113 @@ export default {
           top: -.5em;
           right: .7em;
           transform: rotate(-45deg) translateY(.41rem)
+        }
+      }
+      .menu_detail_list {
+        background-color: #fff;
+        padding: .6em .4em;
+        border-bottom: 1px solid #f8f8f8;
+        position: relative;
+        overflow: hidden;
+        .menu_detail_link {
+          display: flex;
+          .menu_food_img {
+            margin-right: .4em;
+            img {
+              @include wh(2em, 2em);
+              display: block
+            }
+          }
+          .menu_food_description {
+            width: 100%;
+            .food_description_head {
+              display: flex;
+              justify-content: space-between;
+              margin-bottom: .2em;
+              .description_foodname {
+                @include sc(.6em, #333)
+              }
+              .attributes_ul {
+                display: flex;
+                background-color: red;
+                li {
+                  font-size: .7em;
+                  height: .6em;
+                  line-height: 5.5em;
+                  padding: .1em;
+                  border: 1px solid #666;
+                  border-radius: 0.3em;
+                  margin-right: .1em;
+                  transform: scale(.8);
+                  p {
+                    white-space: nowrap;
+                  }
+                }
+                .attribute_new {
+                  position: absolute;
+                  top: 0;
+                  left: 0;
+                  background-color: #4cd964;
+                  @include wh(3em, 3em);
+                  display: flex;
+                  align-item: flex-end;
+                  transform: rotate(-45deg) translate(-.0em, -2.3em);
+                  border: none;
+                  border-radius: 0;
+                  p {
+                    @include sc(.5em, #fff);
+                    text-align: center;
+                    flex: 1;
+                    transform: scale(0.8) translate(0.1em, -.1em)
+                  }
+                }
+              }
+            }
+            .food_description_content {
+              @include sc(.5em, #999);
+              line-height: .6em;
+            }
+            .food_description_sale_rating {
+              line-height: .8em;
+              span {
+                @include sc(.5em, #333)
+              }
+            }
+            .food_activity {
+              line-height: .4em;
+              span {
+                font-size: .3em;
+                border: 1px soild currentColor;
+                border-radius: .3em;
+                padding: .08em;
+                display: inline-block;
+                transform: scale(.8);
+                marigin-left: -0.35em
+              }
+            }
+          }
+        }
+        .menu_detail_footer {
+          margin-left: 2.4em;
+          margin-top: .3em;
+          @include fj;
+          .food_price {
+            span{
+              font-family: 'Helvetica Neue',Tahoma,Arial;
+            }
+            span:nth-of-type(1) {
+              @include sc(.5em, #666);
+              margin-right: .05em
+            }
+            span:nth-of-type(2) {
+              @include sc(.6em, #f60);
+              font-weight: bold;
+              margin-right: .3em
+            }
+            span:nth-of-type(3) {
+              @include sc(.5em, #666)
+            }
+          }
         }
       }
     }
