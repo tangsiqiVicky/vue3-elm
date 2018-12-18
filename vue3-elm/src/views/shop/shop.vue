@@ -142,11 +142,11 @@
               </ul>
             </section>
           </section>
-        <!--   <section class="buy_cart_container">
+          <section class="buy_cart_container">
             <section  class="cart_icon_num">
-              <div class="cart_icon_container">
+              <div class="cart_icon_container cart_icon_activity">
                 <span class="cart_list_length">
-                  20
+                  99
                 </span>
                 <svg class="cart_icon">
                   <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#cart-icon"></use>
@@ -157,12 +157,12 @@
                 <div>配送费￥5</div>
               </div>
             </section>
-            <section class="gotopay">
+            <section class="gotopay gotopay_acitvity">
               <span class="gotopay_button_style">
                 还差￥20起送
               </span>
             </section>
-          </section> -->
+          </section>
         </section>
       </transition>
      </section>
@@ -583,6 +583,81 @@ export default {
           }
         }
       }
+    }
+  }
+  .buy_cart_container {
+    position: absolute;
+    background-color: #3d3d3f;
+    bottom: 0;
+    left: 0;
+    z-index: 13;
+    display: flex;
+    @include wh(100%, 2em);
+    .cart_icon_num {
+      flex: 1;
+      .cart_icon_container {
+        display: flex;
+        background-color: #3d3d3f;
+        position: absolute;
+        padding: .4em;
+        border: 0.18em soild #444;
+        border-radius: 50%;
+        left: .5em;
+        top: -.7em;
+        .cart_icon {
+          @include wh(1.2em, 1.2em)
+        }
+        .cart_list_length {
+          position: absolute;
+          top: -.25em;
+          right: -.25em;
+          background-color: #ff461d;
+          line-height: 1.7em;
+          text-align: center;
+          border-radius: 50%;
+          border: 0.025em soild #ff461d;
+          min-width: 1.7em;
+          height: 1.7em;
+          @include sc(.5em, #fff);
+          font-family: Helvetica Neue,Tahoma,Arial;
+        }
+      }
+      .cart_icon_activity {
+        background-color: #3190e8;
+      }
+      .cart_num {
+        @include ct;
+        left: 3.5em;
+        div {
+          color: #fff;
+        }
+        div:nth-of-type(1) {
+          font-size: .8em;
+          font-weight: blod;
+          margin-bottom: .1em;
+        }
+        div:nth-of-type(2) {
+          font-size: .4em;
+        }
+      }
+    }
+    .gotopay {
+      position: absolute;
+      right: 0;
+      background-color: #535356;
+      @include wh(5em, 100%);
+      text-align: center;
+      display: flex;
+      align-item: center;
+      justify-content:center;
+      line-height:2em;
+      .gotopay_button_style {
+        @include sc(.7em, #fff);
+        font-weight: 700;
+      }
+    }
+    .gotopay_acitvity {
+      background-color: #4cd964;
     }
   }
   .fade-enter-active, .fade-leave-active {
