@@ -163,6 +163,44 @@
               </span>
             </section>
           </section>
+          <transition name="toogle-cart">
+            <section class="cart_food_list">
+              <header>
+                <h4>购物车</h4>
+                <div>
+                  <svg>
+                    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#cart-remove"></use>
+                  </svg>
+                  <span class="clear_cart">清空</span>
+                </div>
+              </header>
+              <section class="cart_food_details">
+                <ul>
+                  <li class="cart_food_li">
+                    <div class="cart_list_num">
+                      <p class="ellipsis">溏心蛋</p>
+                      <p class="ellipsis"></p>
+                    </div>
+                    <div class="cart_list_price">
+                      <span>￥</span>
+                      <span>3</span>
+                    </div>
+                    <section class="cart_list_control">
+                      <span>
+                        <svg>
+                          <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#cart-minus"></use>
+                        </svg>
+                      </span>
+                      <span class="cart_num">1</span>
+                      <svg class="cart_add">
+                        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#cart-add"></use>
+                      </svg>
+                    </section>
+                  </li>
+                </ul>
+              </section>
+            </section>
+          </transition>
         </section>
       </transition>
      </section>
@@ -660,10 +698,95 @@ export default {
       background-color: #4cd964;
     }
   }
+  .cart_food_list {
+    position: fixed;
+    width: 100%;
+    padding-bottom: 2em;
+    z-index: 12;
+    bottom: 0;
+    left: 0;
+    background-color: #fff;
+    header {
+      @include fj;
+      align-item: center;
+      padding: .3em .6em;
+      background-color: #eceff1;
+      svg {
+        @include wh(.6em, .6em);
+        vertical-align: middle;
+      }
+      h4 {
+        @include sc(.7em, #666);
+      }
+      .clear_cart {
+        @include sc(.6em, #666)
+      }
+    }
+    .cart_food_details {
+      background-color: #fff;
+      max-height: 20em;
+      overflow-y: auto;
+      .cart_food_li {
+        @include fj;
+        padding: .6em .5em;
+        .cart_list_num {
+          width: 55%;
+          p:nth-of-type(1) {
+            @include sc(.6em, #666);
+            font-weight: bold;
+          }
+          p:nth-of-type(2) {
+            @include sc(.4em, #666)
+          }
+        }
+        .cart_list_price{
+          font-size: 0;
+          span:nth-of-type(1){
+            @include sc(.6rem, #f60);
+            font-family: Helvetica Neue,Tahoma;
+
+          }
+          span:nth-of-type(2){
+            @include sc(.7rem, #f60);
+            font-family: Helvetica Neue,Tahoma;
+            font-weight: bold;
+          }
+        }
+        .cart_list_control {
+          display: flex;
+          align-item: center;
+          span {
+            display: flex;
+            align-item: center;
+            justify-content: center;
+          }
+          svg {
+            @include wh(.9em, .9em);
+            fill: #3190e8;
+          }
+          .specs_reduce_icon {
+            fill: #999;
+          }
+          .cart_num {
+            @include sc(.65em, #666);
+            min-width: 1em;
+            text-align: center;
+            font-family: Helvetica Neue,Tahoma;
+          }
+        }
+      }
+    }
+  }
   .fade-enter-active, .fade-leave-active {
     transition: opacity .5s;
   }
   .fade-enter, .fade-leave-active {
     opacity: 0;
+  }
+  .toggle-cart-enter-active, .toggle-cart-leave-active {
+    transition: all .3s ease-out;
+  }
+  .toggle-cart-enter, .toggle-cart-leave-active {
+    transform: translateY(100%)
   }
 </style>
