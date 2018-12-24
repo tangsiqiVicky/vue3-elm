@@ -1,6 +1,6 @@
 <template>
   <div>
-    <header-top :name="title">
+    <header-top :name="title" :signin-up="true">
       <router-link :to="'/'" slot="search" class="link_search">
         <svg xmlns="http://www.w3.org/2000/svg" version="1.1" >
           <circle cx="8" cy="8" r="7" stroke="rgb(255,255,244)" stroke-width="1" fill="none"></circle>

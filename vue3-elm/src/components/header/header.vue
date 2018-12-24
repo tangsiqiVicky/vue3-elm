@@ -10,7 +10,7 @@
     <section class="title_head ellipsis" v-if="name">
       <span class="title_text">{{name}}</span>
     </section>
-    <router-link :to="userInfo? 'profile': 'login'" class="head_login" >
+    <router-link :to="userInfo? 'profile': 'login'" class="head_login" v-if='signinUp' >
       <svg class="user_avatar" v-if="userInfo">
         <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#user"></use>
       </svg>
@@ -51,7 +51,6 @@ export default {
       left: 0.4em;
       @include wh(0.6em, 1em);
       @include ct;
-      line-height: 2.2em;
       margin-left: .4em;
     }
     .title_head {

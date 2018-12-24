@@ -9,7 +9,7 @@
       <header class="shop_detail_header" ref="shopheader" >
         <img src="" alt="" class="header_cover_img">
         <section class="description_header">
-          <router-link to="/shop" class="description_top">
+          <router-link to="/shop/shopDetail" class="description_top">
             <section class="description_left">
               <img src="" alt="">
             </section>
@@ -106,7 +106,7 @@
                       </p> -->
                   </header>
                   <section class="menu_detail_list">
-                    <router-link tag="div" to="/" class="menu_detail_link">
+                    <router-link tag="div" to="/shop/foodDetail" class="menu_detail_link">
                       <section class="menu_food_img">
                         <img/>
                       </section>
@@ -201,9 +201,15 @@
               </section>
             </section>
           </transition>
+          <transition name="fade">
+            <div class="screen_cover" v-show="showActivities"></div>
+          </transition>
         </section>
       </transition>
      </section>
+     <transition name="router-slid" mode="out-in">
+      <router-view></router-view>
+     </transition>
   </div>
 </template>
 
@@ -777,6 +783,15 @@ export default {
       }
     }
   }
+  .screen_cover {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(0,0,0,0.3);
+    z-index: 11;
+  }
   .fade-enter-active, .fade-leave-active {
     transition: opacity .5s;
   }
@@ -788,5 +803,12 @@ export default {
   }
   .toggle-cart-enter, .toggle-cart-leave-active {
     transform: translateY(100%)
+  }
+  .router-slid-enter-active, .router-slid-leave-active {
+    transition: all .4s;
+  }
+  .router-slid-enter, .router-slid-leave-active {
+    transform: translate3d(2em, 0, 0);
+    opacity: 0;
   }
 </style>

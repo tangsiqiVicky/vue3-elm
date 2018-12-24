@@ -6,6 +6,8 @@ const order = () => import('@/views/order/order.vue')
 const profile = () => import('@/views/profile/profile.vue')
 const search = () => import('@/views/search/search.vue')
 const shop = () => import('@/views/shop/shop.vue')
+const shopDetail = () => import('@/views/shop/children/shopDetail.vue')
+const foodDetail = () => import('@/views/shop/children/foodDetail.vue')
 const login = () => import('@/views/login/login.vue')
 Vue.use(Router)
 
@@ -52,7 +54,19 @@ export default new Router({
       // 店铺页面
       path: '/shop',
       name: 'shop',
-      component: shop
+      component: shop,
+      children: [{
+        // 商铺详情页
+        path: 'shopDetail',
+        name: 'shopDetail',
+        component: shopDetail
+      }, {
+        // 商品详情页
+        path: 'foodDetail',
+        name: 'foodDetail',
+        component: foodDetail
+      }
+      ]
     },
     {
       // 登录
