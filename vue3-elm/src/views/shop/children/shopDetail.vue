@@ -35,8 +35,38 @@
           <svg class="shop_status">
             <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#res-well"></use>
           </svg>
+          <svg class="res-well">
+            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#res-bad"></use>
+          </svg>
+        </div>
+        <div class="check_date">
+          <p>
+            <span>监督检查结果：</span>
+            <span class="shop_status_well">良好</span>
+            <span class="shop_status_bad">差</span>
+          </p>
+          <p>
+            <span>检查日期：</span>
+            <span>
+              2018-12-12
+            </span>
+          </p>
         </div>
       </section>
+    </section>
+    <section class="shop_status_info">
+      <header>商家信息</header>
+      <p>肯德基</p>
+      <p>地址：江文路</p>
+      <p>
+        <span>营业执照</span>
+        <svg width="14" height="14" xmlns="http://www.w3.org/2000/svg" version="1.1" class="description_arrow">
+          <path d="M0 0 L8 7 L0 14" stroke="#bbb" stroke-width="1.5" fill="none"></path>
+        </svg>
+      </p>
+      <p>
+        <span>餐饮服务许可证</span>
+      </p>
     </section>
   </div>
 </template>
@@ -104,7 +134,7 @@ export default {
         margin-bottom: .4em;
         .shop_status_header {
           display: flex;
-          justifiy-content: space-between;
+          justify-content: space-between;
           align-item: center;
           line-height: 1.8em;
           padding: 0 .6em;
@@ -117,9 +147,38 @@ export default {
             vertical-align: middle;
           }
           svg {
-            @include wh(.6em, 6em);
+            @include wh(.6em, .6em);
             vertical-align: middle;
           }
+        }
+        .shop_status_detail {
+          display: flex;
+          padding: .6em;
+          svg{
+            @include wh(2em, 2em);
+            margin-right: .6em
+          }
+          .check_date {
+            span {
+              @include sc(.55em, #666)
+            }
+            .shop_status_well {
+              color: rgb(126,211,33)
+            }
+            .shop_status_bad {
+              color: red
+            }
+          }
+        }
+      }
+      .shop_status_info {
+        background-color: #fff;
+        margin-bottom: .4em;
+        header {
+          line-height: 1.8em;
+          padding: 0 .6em;
+          @include sc(.75em, #333)
+          border-bottom: 0.025em solid #f1f1f1;
         }
       }
   }
