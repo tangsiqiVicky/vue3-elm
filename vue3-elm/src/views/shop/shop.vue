@@ -206,6 +206,44 @@
           </transition>
         </section>
       </transition>
+      <transition name="fade-choose">
+        <section class="rating_container" v-show="changeShowType=='rating'">
+          <section>
+            <header class="rating_header">
+              <section class="rating_header_left">
+                <p>4.7</p>
+                <p>综合评价</p>
+                <p>高于周边商家76.7%</p>
+              </section>
+              <section class="rating_header_right">
+                <p>
+                  <span>服务态度</span>
+                  <rating-star :rating="4.7"></rating-star>
+                  <span>
+                    4.7
+                  </span>
+                </p>
+                <p>
+                  <span>菜品评价</span>
+                  <rating-star :rating="4.3"></rating-star>
+                  <span class="rating_num"></span>
+                </p>
+                <p>
+                  <span>送达时间</span>
+                  <span class="delivery_time">
+                    5分钟
+                  </span>
+                </p>
+              </section>
+            </header>
+            <ul class="tag_list_ul">
+              <li>
+                全部(12)
+              </li>
+            </ul>
+          </section>
+        </section>
+      </transition>
      </section>
      <transition name="router-slid" mode="out-in">
       <router-view></router-view>
