@@ -58,6 +58,7 @@
       <header>商家信息</header>
       <p>肯德基</p>
       <p>地址：江文路</p>
+      <p>营业时间： 9：00 - 20：00</p>
       <p>
         <span>营业执照</span>
         <svg width="14" height="14" xmlns="http://www.w3.org/2000/svg" version="1.1" class="description_arrow">
@@ -66,6 +67,9 @@
       </p>
       <p>
         <span>餐饮服务许可证</span>
+        <svg width="14" height="14" xmlns="http://www.w3.org/2000/svg" version="1.1" class="description_arrow">
+          <path d="M0 0 L8 7 L0 14" stroke="#bbb" stroke-width="1.5" fill="none"></path>
+        </svg>
       </p>
     </section>
   </div>
@@ -179,6 +183,19 @@ export default {
           padding: 0 .6em;
           @include sc(.75em, #333)
           border-bottom: 0.025em solid #f1f1f1;
+        }
+        p{
+          @include sc(.6em, #666);
+          padding: .7em .6em .7em 0;
+          margin-left: .6em;
+          border-bottom: 0.025em soild #f5f5f5
+        }
+        span {
+          color: #666
+        }
+        p:nth-of-type(4), p:nth-of-type(5){
+          display: flex;
+          justify-content: space-between;
         }
       }
   }
