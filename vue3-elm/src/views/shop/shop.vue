@@ -240,6 +240,39 @@
               <li>
                 全部(12)
               </li>
+              <li>
+                满意(42)
+              </li>
+              <li>
+                服务态度好(152)
+              </li>
+              <li>
+                有图(2)
+              </li>
+            </ul>
+            <ul class="rating_list_ul">
+              <li class="rating_list">
+                <img src="" alt="" class="user_avatar">
+                <section class="rating_list_details">
+                  <header>
+                    <section class="username_star">
+                      <p class="username">
+                        tangsiqi
+                      </p>
+                      <p class="star_desc">
+                        <rating-star :rating="4.7">
+                        </rating-star>
+                        <span class="time_spent_desc">
+                          按时送达
+                        </span>
+                      </p>
+                    </section>
+                    <time class="rated_at">
+                      2017-02-14 12:04:20
+                    </time>
+                  </header>
+                </section>
+              </li>
             </ul>
           </section>
         </section>
