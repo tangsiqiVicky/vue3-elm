@@ -10,8 +10,8 @@ const state = {
 }
 
 export default new Vuex.Store({
-    state,
-    // getters,
-    // actions,
-    mutations,
+  state,
+  // getters,
+  // actions,
+  mutations
 })
